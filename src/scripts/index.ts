@@ -85,21 +85,6 @@ class App {
                 duration: 0.2,
                 ease: 'none'
             }, (i + 3) / 500);
-            /*
-            tl.to(item, {
-                size: i + this.renderer.randomSize() / 2000,
-                color: this.renderer.randomColor(),
-                duration: 0.2,
-                ease: 'none'
-            }, i / 1000);
-
-            tl.to(item, {
-                size: i + this.renderer.randomSize(),
-                color: this.renderer.randomColor(),
-                duration: 0.3,
-                ease: 'none'
-            }, 0.5);
-            */
         }
 
         console.log('duration:', tl.duration());
