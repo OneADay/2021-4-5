@@ -3,7 +3,6 @@ import * as seedrandom from 'seedrandom';
 import gsap from 'gsap';
 
 import BaseRecorder from './recorders/baseRecorder';
-import Recorder from './recorders/mediaRecorder';
 import CCaptureRecorder from './recorders/ccaptureRecorder';
 import saveThumbnail from './recorders/thumbnailCapture';
 
@@ -16,6 +15,7 @@ interface CanvasElement extends HTMLCanvasElement {
 
 const DEBUG: boolean = true;
 const THUMBNAIL: boolean = false;
+const FORMAT: string = 'gif';
 
 const srandom = seedrandom('a');
 
@@ -32,7 +32,7 @@ class App {
     constructor() {
         this.canvas = <CanvasElement> document.getElementById('canvas');
 
-        this.recorder = new CCaptureRecorder(this.canvas);
+        this.recorder = new CCaptureRecorder(this.canvas, FORMAT);
         if (this.shouldRecord()) {
             this.recorder.start();
         }
@@ -59,7 +59,7 @@ class App {
             onComplete: () => this.handleTLComplete()
         });
 
-        tl.timeScale(0.3);
+        tl.timeScale(0.35);
 
         for (let i = items.length - 1; i > 0; i--) {
             let item = items[i];
